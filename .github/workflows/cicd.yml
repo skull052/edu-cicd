@@ -7,16 +7,9 @@ jobs:
   ci-job:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "Continuous Integration"
-        
-  cd-job:
-    needs: [ ci-job ]
-    runs-on: ubuntu-latest
-    steps:
-    - run: echo "Continuous Deployment"
+    - name: Check Out
+      uses: actions/checkout@v3
 
-  noti-job:
-    needs: [ cd-job ]
-    runs-on: ubuntu-latest
-    steps:
-    - run: echo "Notification"
+    - name: 소스코드 확인
+      run: |
+        tree -L 5 ~/work/guestbook
